@@ -81,7 +81,8 @@ def _single_replace(self, to_replace, method, inplace, limit):
     if values.dtype == orig_dtype and inplace:
         return
 
-    result = pd.Series(values, index=self.index,
+    result = pd.Series(values, 
+                       x=self.index,
                        dtype=self.dtype).__finalize__(self)
 
     if inplace:
@@ -1095,7 +1096,7 @@ class NDFrame(PandasObject):
         ----------
         path_or_buf : the path (string) or HDFStore object
         key : string
-            indentifier for the group in the store
+            identifier for the group in the store
         mode : optional, {'a', 'w', 'r+'}, default 'a'
 
           ``'w'``
